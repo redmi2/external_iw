@@ -11,6 +11,13 @@ LOCAL_SRC_FILES := \
   sections.c
 
 LOCAL_CFLAGS += -DCONFIG_LIBNL20
+
+# Silence some warnings for now. Needs to be fixed upstream. b/26105799
+LOCAL_CFLAGS += -Wno-unused-parameter \
+                -Wno-sign-compare \
+                -Wno-format
+LOCAL_CLANG_CFLAGS += -Wno-enum-conversion
+
 LOCAL_LDFLAGS := -Wl,--no-gc-sections
 LOCAL_MODULE_TAGS := debug
 LOCAL_STATIC_LIBRARIES := libnl
